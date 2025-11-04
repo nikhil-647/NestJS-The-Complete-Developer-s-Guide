@@ -30,9 +30,9 @@ classDiagram
     CPUModule --> PowerModule
     DiskModule --> PowerModule
 
-    CPUModule : contains CPUService
-    DiskModule : contains DiskService
-    PowerModule : contains PowerService
+    CPUModule *-- CPUService : contains
+    DiskModule *-- DiskService : contains
+    PowerModule *-- PowerService : contains
 ```
 
 ```mermaid
@@ -44,22 +44,21 @@ classDiagram
         +supplyPower()
     }
 
-    class CpuModule {
+    class CPUModule {
     }
 
-    class CpuService {
+    class CPUService {
         +compute()
     }
 
     PowerModule --> PowerService : exports
-    CpuModule --> CpuService
-    CpuService --> PowerService : injects
+    CPUModule --> CPUService
+    CPUService --> PowerService : injects
 
     %% Steps Description
-    note bottom of CpuService
+    note bottom of CPUService
         1. Add PowerService to PowerModule's exports
-        2. Import PowerModule into CpuModule
-        3. Inject PowerService into CpuService constructor
+        2. Import PowerModule into CPUModule
+        3. Inject PowerService into CPUService constructor
     end note
 ```
-
