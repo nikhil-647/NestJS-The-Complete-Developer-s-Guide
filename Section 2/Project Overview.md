@@ -53,12 +53,16 @@ classDiagram
 
     PowerModule --> PowerService : exports
     CPUModule --> CPUService
+    
+    %% NEW LINE ADDED: CPUModule imports PowerModule to gain access to exported services
+    CPUModule --> PowerModule : imports
+    
     CPUService --> PowerService : injects
 
     %% Steps Description
     note bottom of CPUService
         1. Add PowerService to PowerModule's exports
-        2. Import PowerModule into CPUModule
+        2. Import PowerModule into CPUModule (<- This is now shown)
         3. Inject PowerService into CPUService constructor
     end note
 ```
