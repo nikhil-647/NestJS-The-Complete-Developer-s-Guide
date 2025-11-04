@@ -50,8 +50,8 @@ classDiagram
     class CPUService {
         +compute()
     }
-    
-    %% The note is attached immediately after the class definition for reliability
+
+    %% Proper syntax for attaching notes
     note bottom of CPUService
         1. Add PowerService to PowerModule's exports
         2. Import PowerModule into CPUModule
@@ -60,9 +60,9 @@ classDiagram
 
     PowerModule --> PowerService : exports
     CPUModule --> CPUService
-    
-    %% Shows the import from module to module
+
+    %% Show import from one module to another
     CPUModule --> PowerModule : imports
-    
+
     CPUService --> PowerService : injects
 ```
