@@ -36,25 +36,29 @@ classDiagram
 ```
 
 ```mermaid
-flowchart LR
-    subgraph PowerModule["Power Module"]
-        PS["Power Service\nsupplyPower()"]
-    end
+classDiagram
+    class PowerModule {
+    }
 
-    subgraph CpuModule["CPU Module"]
-        CS["CPU Service\ncompute()"]
-    end
+    class PowerService {
+        +supplyPower()
+    }
 
-    %% Connections
-    PS --> CS
+    class CPUModule {
+    }
 
-    %% Dependency direction
-    PowerModule --> CpuModule
+    class CPUService {
+        +compute()
+    }
 
-    %% Notes section
-    note right of CS
-        1. Add PowerService to PowerModule exports
-        2. Import PowerModule into CpuModule
-        3. Inject PowerService into CpuService constructor
+    PowerModule --> PowerService : exports
+    CPUModule --> CPUService
+    CPUModule --> PowerModule : imports
+    CPUService --> PowerService : injects
+
+    note right of CPUService
+        1. Add PowerService to PowerModule's exports
+        2. Import PowerModule into CPUModule
+        3. Inject PowerService into CPUService constructor
     end note
 ```
