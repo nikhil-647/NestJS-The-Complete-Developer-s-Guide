@@ -50,20 +50,19 @@ classDiagram
     class CPUService {
         +compute()
     }
-
-    PowerModule --> PowerService : exports
-    CPUModule --> CPUService
     
-    CPUModule --> PowerModule : imports
-    
-    CPUService --> PowerService : injects
-
-    %% Blank line added here to separate relationship from note
-
-    %% Steps Description
+    %% The note is attached immediately after the class definition for reliability
     note bottom of CPUService
         1. Add PowerService to PowerModule's exports
         2. Import PowerModule into CPUModule
         3. Inject PowerService into CPUService constructor
     end note
+
+    PowerModule --> PowerService : exports
+    CPUModule --> CPUService
+    
+    %% Shows the import from module to module
+    CPUModule --> PowerModule : imports
+    
+    CPUService --> PowerService : injects
 ```
