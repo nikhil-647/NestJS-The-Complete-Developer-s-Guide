@@ -35,6 +35,8 @@ classDiagram
     PowerModule *-- PowerService : contains
 ```
 
+In order to use supplyPower power in CPU module we have follow the following steps
+
 ```text
 +------------------+         +------------------+
 |   Power Module   |         |    CPU Module    |
