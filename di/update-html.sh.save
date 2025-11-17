@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Fetch metadata
+INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id)
+PUBLIC_IP=$(curl -s http://169.254.169.254/latest/meta-data/public-ipv4)
+AZ=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone)
+REGION=${AZ::-1}  # remove last letter from AZ to get region
+
+# Path to your HTML
+HTML_PATH="/var/www/html/index.html"
+
+# Replace placeholders in HTML file
+sudo sed -i "s/INSTANCE_ID_PLACEHOLDER/$INSTANCE_ID/" $HTML_PATH
+sudo sed -i "s/PUBLIC_IP_PLACEHOLDER/$PUBLIC_IP/" $HTML_PATH
+sudo sed -i "s/AVAILABILITY_ZONE_PLACEHOLDER/$AZ/" $HTML_PATH
+sudo sed -i "s/REGION_PLACEHOLDER/$REGION/" $HTML_PATH
+
+echo "✅ HTML updated with live instance metadata!"
+
