@@ -7,3 +7,15 @@
 | **GET** /reports | QS - { make, model, year, mileage, longitude, latitude } | Get an estimate for the car's value |
 | **POST** /reports | Body - { make, model, year, mileage, longitude, latitude, price } | Report how much a vehicle sold for |
 | **PATCH** /reports/:id | Body - { approved } | Approve or reject a report submitted by a user |
+
+## 🧱 Application Architecture: Layered Modules
+
+This diagram shows the structure of the application, organized into two main modules with standard layered components (Controllers, Services, Repositories).
+
+| Layer | Users Module | Reports Module |
+| :--- | :--- | :--- |
+| **Controllers** | Users Controller | Reports Controller |
+| **Services** | Users Service | Reports Service |
+| **Repositories** | Users Repository | Reports Repository |
+
+
